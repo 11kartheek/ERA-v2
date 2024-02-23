@@ -43,7 +43,7 @@ def train(model, device, train_loader, optimizer, criterion):
 
   train_acc.append(100*correct/processed)
   train_losses.append(train_loss/len(train_loader))
-  return train_acc,train_losses
+  return {'train_acc' : train_acc,'train_loss' : train_losses}
 
 def test(model, device, test_loader, criterion):
     model.eval()
@@ -68,4 +68,5 @@ def test(model, device, test_loader, criterion):
     print('Test set: Average loss: {:.4f}, Accuracy: {}/{} ({:.2f}%)\n'.format(
         test_loss, correct, len(test_loader.dataset),
         100. * correct / len(test_loader.dataset)))
-    return test_acc,test_losses
+
+  return {'test_acc' : test_acc,'train_loss' : test_losses}
